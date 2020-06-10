@@ -1,0 +1,22 @@
+{
+  "name": "proyecto",
+  "version": "1.0.0",
+  "description": "Este es el proyecto de lenguajes de programacion",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CamielaTeam/lenguajes-proyecto.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CamielaTeam/lenguajes-proyecto/issues"
+  },
+  "homepage": "https://github.com/CamielaTeam/lenguajes-proyecto#readme",
+  "dependencies": {
+    "antlr4": "^4.8.0"
+  }
+}
