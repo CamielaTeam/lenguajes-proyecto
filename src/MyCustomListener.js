@@ -20,9 +20,7 @@ ArrayInitListener.prototype.enterInit = function (ctx) {};
 ArrayInitListener.prototype.exitInit = function (ctx) {};
 
 // Enter a parse tree produced by ArrayInitParser#value.
-ArrayInitListener.prototype.enterValue = function (ctx) {
-  console.log(ctx.INT().toString());
-};
+ArrayInitListener.prototype.enterValue = function (ctx) {};
 
 // Exit a parse tree produced by ArrayInitParser#value.
 ArrayInitListener.prototype.exitValue = function (ctx) {};
