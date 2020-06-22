@@ -6,19 +6,28 @@ var ReactListener = require("../gramatica/.antlr/ReactListener")
   .ReactListener;
 var antlr4 = require("antlr4");
 var fs = require("fs");
-var input = fs.readFileSync("./archivos_entrada/input.txt").toString();
+var path = require('path');
+
+
+const ruta_entradas = path.join(__dirname, '/../archivos_entrada');
+
+
 
 var KeyPrinter = function () {
   ReactListener.call(this);
   return this;
 };
 
+//  Variables globales del proyecto
+var orderComponents = [];
 
-var currentComponent = "";
-var currentPropTypesComponent = "";
-var matrixToRender = [];
+
+//  Variables locales del listener
 var listOfImports = [];
+var currentComponent = "";
 var currentComponentCalls = [];
+var currentPropTypesComponent = "";
+
 var insideImport = false;
 var listOfComponentsInFile = [];
 
@@ -35,13 +44,25 @@ KeyPrinter.prototype.exitFunctionR = function(ctx) {
 };
 
 KeyPrinter.prototype.enterHtml_elements = function(ctx){
-  if(!listOfComponentsInFile.includes(currentComponent)){
-    listOfComponentsInFile.push(currentComponent);
+  if(listOfComponentsInFile.filter((component) => 
+  { return component.name === currentComponent}
+  ).length === 0){
+    listOfComponentsInFile.push({name: currentComponent, componentsInside: {}});
   }
-  var tagId = ctx.ID()[0].toString();
-  if(listOfImports.includes(tagId) && !currentComponentCalls.includes(tagId)){
-    currentComponentCalls.push(tagId);
+  if(listOfImports.includes(ctx.ID()[0].toString())){
+    
+    index_of_component = -1;
+
+    for(var i = 0; i < listOfComponentsInFile.length; i++){
+      if(listOfComponentsInFile[i].name === currentComponent){
+        index_of_component = i;
+        break;
+      }
+    }
+
+    listOfComponentsInFile[index_of_component].componentsInside[ctx.ID()[0].toString()] = {};
   }
+
 }
 
 KeyPrinter.prototype.enterNo_id_import = function(ctx){
@@ -72,7 +93,6 @@ KeyPrinter.prototype.enterMore_id = function(ctx){
 }
 
 KeyPrinter.prototype.enterAdding_proptypes = function(ctx){
-  console.log(ctx.ID().toString());
 }
 
 KeyPrinter.prototype.exitProgram = function (ctx) {
@@ -97,4 +117,21 @@ function main(inputText) {
   antlr4.tree.ParseTreeWalker.DEFAULT.walk(printer, tree);
 }
 
-main(input);
+
+fs.readdir(ruta_entradas, function (err, files) {
+  if (err) {
+      return console.log('Unable to scan directory: ' + err);
+  } 
+  files.forEach(function (file) {
+      // Do whatever you want to do with the file
+      console.log(file); 
+      var input = fs.readFileSync(`./archivos_entrada/${file}`).toString();
+      main(input);
+  });
+  console.log();
+  console.log(listOfComponentsInFile);
+});
+
+
+
+
