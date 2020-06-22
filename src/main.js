@@ -7,7 +7,7 @@ var ReactListener = require("../gramatica/.antlr/ReactListener")
 var antlr4 = require("antlr4");
 var fs = require("fs");
 var path = require('path');
-
+var util = require('util');
 
 const ruta_entradas = path.join(__dirname, '/../archivos_entrada');
 
@@ -19,6 +19,7 @@ var KeyPrinter = function () {
 };
 
 //  Variables globales del proyecto
+var listOfComponentsInProject = [];
 var orderComponents = [];
 
 
@@ -27,12 +28,19 @@ var listOfImports = [];
 var currentComponent = "";
 var currentComponentCalls = [];
 var currentPropTypesComponent = "";
+var currentComponentCall = "";
 
 var insideImport = false;
 var listOfComponentsInFile = [];
+var currentPropType = "";
 
 KeyPrinter.prototype = Object.create(ReactListener.prototype);
 KeyPrinter.prototype.constructor = KeyPrinter;
+
+
+KeyPrinter.prototype.enterProgram = function(ctx) {
+  console.log("ENTRE AL PROGRAMA");
+};
 
 
 KeyPrinter.prototype.enterFunctionR = function(ctx) {
@@ -61,6 +69,7 @@ KeyPrinter.prototype.enterHtml_elements = function(ctx){
     }
 
     listOfComponentsInFile[index_of_component].componentsInside[ctx.ID()[0].toString()] = {};
+    currentComponentCall = ctx.ID()[0].toString();
   }
 
 }
@@ -93,17 +102,87 @@ KeyPrinter.prototype.enterMore_id = function(ctx){
 }
 
 KeyPrinter.prototype.enterAdding_proptypes = function(ctx){
+  currentPropTypesComponent = ctx.ID().toString();
+  index_of_component = -1;
+  for(var i = 0; i < listOfComponentsInFile.length; i++){
+    if(listOfComponentsInFile[i].name === currentPropTypesComponent){
+      index_of_component = i;
+      break;
+    }
+  }
+  listOfComponentsInFile[i].mustReceiveProps = [];
 }
+
+KeyPrinter.prototype.exitAdding_proptypes = function(ctx){
+  currentPropTypesComponent = "";
+}
+
+
+
+
+KeyPrinter.prototype.enterProps = function(ctx){
+  if(listOfImports.includes(currentComponentCall)){
+    index_of_component = -1;
+    for(var i = 0; i < listOfComponentsInFile.length; i++){
+      if(listOfComponentsInFile[i].name === currentComponent){
+        index_of_component = i;
+        break;
+      }
+    }
+    listOfComponentsInFile[index_of_component].componentsInside[currentComponentCall].passedProps ? 
+      listOfComponentsInFile[index_of_component].componentsInside[currentComponentCall].passedProps.push(ctx.ID().toString()) :
+      listOfComponentsInFile[index_of_component].componentsInside[currentComponentCall].passedProps = [ctx.ID().toString()];
+  }
+  
+}
+
+KeyPrinter.prototype.enterProp_types_body = function(ctx){
+  index_of_component = -1;
+  for(var i = 0; i < listOfComponentsInFile.length; i++){
+    if(listOfComponentsInFile[i].name === currentPropTypesComponent){
+      index_of_component = i;
+      break;
+    }
+  }
+  var prop = {name: ctx.ID().toString()}
+  if(ctx.types_of_proptypes().NUMBER()){
+    prop.type = (ctx.types_of_proptypes().NUMBER().toString());
+  }else if(ctx.types_of_proptypes().ARRAY()){
+    prop.type = (ctx.types_of_proptypes().ARRAY().toString());
+  }else if(ctx.types_of_proptypes().BOOL()){
+    prop.type = (ctx.types_of_proptypes().BOOL().toString());
+  }else if(ctx.types_of_proptypes().FUNC()){
+    prop.type = (ctx.types_of_proptypes().FUNC().toString());
+  }else if(ctx.types_of_proptypes().OBJECT()){
+    prop.type = (ctx.types_of_proptypes().OBJECT().toString());
+  }else if(ctx.types_of_proptypes().STRING_TYPE()){
+    prop.type = (ctx.types_of_proptypes().STRING_TYPE().toString());
+  }else if(ctx.types_of_proptypes().SYMBOL()){
+    prop.type = (ctx.types_of_proptypes().SYMBOL().toString());
+  }
+  listOfComponentsInFile[i].mustReceiveProps.push(prop);
+}
+
+
 
 KeyPrinter.prototype.exitProgram = function (ctx) {
   console.log();
   console.log("-------SALIDA-------");
   console.log();
-  console.log("LISTA DE IMPORTS");
-  console.log(listOfImports);
-  console.log();
   console.log("LISTA DE COMPONENTES LLAMADOS");
-  console.log(currentComponentCalls);
+  console.log(util.inspect(listOfComponentsInFile, {showHidden: false, depth: null}))
+
+  listOfComponentsInFile.forEach(component => {
+    listOfComponentsInProject.push(component);
+  });
+  listOfImports = [];
+  currentComponent = "";
+  currentComponentCalls = [];
+  currentPropTypesComponent = "";
+  currentComponentCall = "";
+  insideImport = false;
+  listOfComponentsInFile = [];
+  currentPropType = "";
 };
 
 function main(inputText) {
@@ -128,9 +207,9 @@ fs.readdir(ruta_entradas, function (err, files) {
       var input = fs.readFileSync(`./archivos_entrada/${file}`).toString();
       main(input);
   });
-  console.log();
-  console.log(listOfComponentsInFile);
+  console.log(util.inspect(listOfComponentsInProject, {showHidden: false, depth: null}))
 });
+
 
 
 
