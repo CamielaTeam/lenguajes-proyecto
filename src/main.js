@@ -20,19 +20,16 @@ var KeyPrinter = function () {
 
 //  Variables globales del proyecto
 var listOfComponentsInProject = [];
-var orderComponents = [];
-
+var componentMatrix = [];
 
 //  Variables locales del listener
 var listOfImports = [];
 var currentComponent = "";
-var currentComponentCalls = [];
 var currentPropTypesComponent = "";
 var currentComponentCall = "";
-
 var insideImport = false;
 var listOfComponentsInFile = [];
-var currentPropType = "";
+
 
 KeyPrinter.prototype = Object.create(ReactListener.prototype);
 KeyPrinter.prototype.constructor = KeyPrinter;
@@ -171,7 +168,7 @@ KeyPrinter.prototype.exitProgram = function (ctx) {
   console.log();
   console.log("LISTA DE COMPONENTES LLAMADOS");
   console.log(util.inspect(listOfComponentsInFile, {showHidden: false, depth: null}))
-
+  console.log();
   listOfComponentsInFile.forEach(component => {
     listOfComponentsInProject.push(component);
   });
@@ -184,6 +181,21 @@ KeyPrinter.prototype.exitProgram = function (ctx) {
   listOfComponentsInFile = [];
   currentPropType = "";
 };
+
+
+function matrixFromArray(arrayOfComponents){
+  arrayOfComponents.forEach(component => {
+    var arrayToAppend = [];
+    for(var i = 0; i<arrayOfComponents.length; i++){
+      arrayOfComponents[i].index = i;
+      arrayToAppend.push(null);
+    }
+    componentMatrix.push(arrayToAppend)
+  });
+  console.log(componentMatrix);
+  console.log(util.inspect(arrayOfComponents, {showHidden: false, depth: null}));
+}
+
 
 function main(inputText) {
   var chars = new antlr4.InputStream(inputText);
@@ -202,15 +214,8 @@ fs.readdir(ruta_entradas, function (err, files) {
       return console.log('Unable to scan directory: ' + err);
   } 
   files.forEach(function (file) {
-      // Do whatever you want to do with the file
-      console.log(file); 
       var input = fs.readFileSync(`./archivos_entrada/${file}`).toString();
       main(input);
   });
-  console.log(util.inspect(listOfComponentsInProject, {showHidden: false, depth: null}))
+  matrixFromArray(listOfComponentsInProject);
 });
-
-
-
-
-
