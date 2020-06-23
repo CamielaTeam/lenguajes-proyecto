@@ -192,7 +192,22 @@ function matrixFromArray(arrayOfComponents){
     }
     componentMatrix.push(arrayToAppend)
   });
+  for(var i = 0; i < arrayOfComponents.length; i++){
+    var row = arrayOfComponents[i].index;
+    var componentsCalled = Object.keys(arrayOfComponents[i].componentsInside);
+    for(var j = 0; j<componentsCalled.length; j++){
+      var nameOfComponent = componentsCalled[j];
+
+      var columnComponent = arrayOfComponents.filter(component => {
+        return component.name === nameOfComponent;
+      })[0];
+
+      componentMatrix[row][columnComponent.index] = columnComponent;
+    }
+  }
+  console.log();
   console.log(componentMatrix);
+
   console.log(util.inspect(arrayOfComponents, {showHidden: false, depth: null}));
 }
 
@@ -209,13 +224,17 @@ function main(inputText) {
 }
 
 
-fs.readdir(ruta_entradas, function (err, files) {
-  if (err) {
-      return console.log('Unable to scan directory: ' + err);
-  } 
-  files.forEach(function (file) {
-      var input = fs.readFileSync(`./archivos_entrada/${file}`).toString();
-      main(input);
+function generateMatrix(){
+  fs.readdir(ruta_entradas, function (err, files) {
+    if (err) {
+        return console.log('Unable to scan directory: ' + err);
+    } 
+    files.forEach(function (file) {
+        var input = fs.readFileSync(`./archivos_entrada/${file}`).toString();
+        main(input);
+    });
+    matrixFromArray(listOfComponentsInProject);
   });
-  matrixFromArray(listOfComponentsInProject);
-});
+}
+
+generateMatrix();
