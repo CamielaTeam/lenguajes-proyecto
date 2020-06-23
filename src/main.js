@@ -36,7 +36,6 @@ KeyPrinter.prototype.constructor = KeyPrinter;
 
 
 KeyPrinter.prototype.enterProgram = function(ctx) {
-  console.log("ENTRE AL PROGRAMA");
 };
 
 
@@ -163,12 +162,14 @@ KeyPrinter.prototype.enterProp_types_body = function(ctx){
 
 
 KeyPrinter.prototype.exitProgram = function (ctx) {
+  /*
   console.log();
   console.log("-------SALIDA-------");
   console.log();
   console.log("LISTA DE COMPONENTES LLAMADOS");
   console.log(util.inspect(listOfComponentsInFile, {showHidden: false, depth: null}))
   console.log();
+  */
   listOfComponentsInFile.forEach(component => {
     listOfComponentsInProject.push(component);
   });
@@ -211,10 +212,6 @@ function matrixFromArray(arrayOfComponents){
       componentMatrix[row][columnComponent.index] = componentToMatrix;
     }
   }
-  console.log();
-  console.log(util.inspect(componentMatrix, {showHidden: false, depth: null}));
-
-  console.log(util.inspect(arrayOfComponents, {showHidden: false, depth: null}));
 }
 
 
@@ -227,20 +224,21 @@ function main(inputText) {
   var tree = parser.program();
   var printer = new KeyPrinter();
   antlr4.tree.ParseTreeWalker.DEFAULT.walk(printer, tree);
+
 }
 
 
-function generateMatrix(){
-  fs.readdir(ruta_entradas, function (err, files) {
-    if (err) {
-        return console.log('Unable to scan directory: ' + err);
-    } 
-    files.forEach(function (file) {
-        var input = fs.readFileSync(`./archivos_entrada/${file}`).toString();
-        main(input);
-    });
-    matrixFromArray(listOfComponentsInProject);
+ function generateMatrix(){
+  var files = fs.readdirSync(ruta_entradas);
+  console.log(files);
+  files.forEach(function (file) {
+    var input = fs.readFileSync(`./archivos_entrada/${file}`).toString();
+    main(input);
   });
+  matrixFromArray(listOfComponentsInProject);
+  return componentMatrix;
 }
 
-generateMatrix();
+
+var matrizFinal = generateMatrix();
+console.log(util.inspect(matrizFinal, {showHidden: false, depth: null}))
