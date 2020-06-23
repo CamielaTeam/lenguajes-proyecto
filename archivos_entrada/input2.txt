@@ -3,7 +3,7 @@ import Componente from 'jiji';
 function Componente2(props){
     return(
         <h1 primeraProp={minumero}>
-          <Componente primeraProp={miNumero}>
+          <Componente segundaProp={miNumero}>
             <Otro>
             </Otro>
           </Componente>

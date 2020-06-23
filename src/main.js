@@ -201,12 +201,18 @@ function matrixFromArray(arrayOfComponents){
       var columnComponent = arrayOfComponents.filter(component => {
         return component.name === nameOfComponent;
       })[0];
+      var componentToMatrix = { name: columnComponent.name, props: []};
 
-      componentMatrix[row][columnComponent.index] = columnComponent;
+      //  Aca toca poner las props en el objeto componentToMatrix
+      for(var k = 0; k<arrayOfComponents[i].componentsInside[nameOfComponent].passedProps.length; k++){
+        componentToMatrix.props.push(arrayOfComponents[i].componentsInside[nameOfComponent].passedProps[k]);
+      }
+
+      componentMatrix[row][columnComponent.index] = componentToMatrix;
     }
   }
   console.log();
-  console.log(componentMatrix);
+  console.log(util.inspect(componentMatrix, {showHidden: false, depth: null}));
 
   console.log(util.inspect(arrayOfComponents, {showHidden: false, depth: null}));
 }
