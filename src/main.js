@@ -205,9 +205,14 @@ function matrixFromArray(arrayOfComponents){
       var componentToMatrix = { name: columnComponent.name, props: []};
 
       //  Aca toca poner las props en el objeto componentToMatrix
-      for(var k = 0; k<arrayOfComponents[i].componentsInside[nameOfComponent].passedProps.length; k++){
-        componentToMatrix.props.push(arrayOfComponents[i].componentsInside[nameOfComponent].passedProps[k]);
+
+      console.log(arrayOfComponents[i]);
+      if(arrayOfComponents[i].componentsInside[nameOfComponent].passedProps){
+        for(var k = 0; k<arrayOfComponents[i].componentsInside[nameOfComponent].passedProps.length; k++){
+          componentToMatrix.props.push(arrayOfComponents[i].componentsInside[nameOfComponent].passedProps[k]);
+        }
       }
+      
 
       componentMatrix[row][columnComponent.index] = componentToMatrix;
     }

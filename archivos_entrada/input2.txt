@@ -1,5 +1,6 @@
 import {asd, bfs} from 'jiji';
 import Componente from 'jiji';
+import Otro from 'otro';
 function Componente2(props){
     return(
         <h1 primeraProp={minumero}>
