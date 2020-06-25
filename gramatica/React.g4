@@ -16,9 +16,9 @@ more_id                 :   COMA ID more_id*;
 
 functionR               :   FUNCTION ID PAR_IZQ id_list PAR_DER CORCHETE_IZQ SALTO? func_body SALTO? CORCHETE_DER PUNTO_COMA SALTO?;
 
-func_body               :   RETURN PAR_IZQ SALTO? html_elements SALTO? PAR_DER PUNTO_COMA;
-html_elements           :   OPEN_TAG ID props? CLOSE_TAG SALTO? value_html_tag? SALTO? html_elements* SALTO? value_html_tag? SALTO? OPEN_TAG SLASH ID CLOSE_TAG ;
-html_short_element      :   OPEN_TAG ID props? SLASH CLOSE_TAG ;
+func_body               :   RETURN PAR_IZQ SALTO? (html_elements | html_short_element) SALTO? PAR_DER PUNTO_COMA;
+html_elements           :   OPEN_TAG ID props? CLOSE_TAG SALTO? value_html_tag? SALTO? (html_elements | html_short_element)* value_html_tag? SALTO? OPEN_TAG SLASH ID CLOSE_TAG SALTO?;
+html_short_element      :   OPEN_TAG ID props? SLASH CLOSE_TAG SALTO?;
 props                   :   ID possible_assign? more_props?;
 more_props              :   ID possible_assign?;
 possible_assign         :   IGUAL (CORCHETE_IZQ ID CORCHETE_DER | literal);

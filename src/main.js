@@ -103,11 +103,14 @@ KeyPrinter.prototype.enterAdding_proptypes = function(ctx){
   index_of_component = -1;
   for(var i = 0; i < listOfComponentsInFile.length; i++){
     if(listOfComponentsInFile[i].name === currentPropTypesComponent){
+      console.log(listOfComponentsInFile[i].name, currentPropTypesComponent);
       index_of_component = i;
       break;
     }
   }
-  listOfComponentsInFile[i].mustReceiveProps = [];
+  console.log("ACA");
+  console.log(currentPropTypesComponent);
+  listOfComponentsInFile[index_of_component].mustReceiveProps = [];
 }
 
 KeyPrinter.prototype.exitAdding_proptypes = function(ctx){
