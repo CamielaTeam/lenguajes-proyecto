@@ -7,8 +7,8 @@ function Componente2(props){
           <Componente segundaProp={miNumero}>
             <Otro>
             </Otro>
-            <Otro>
-            </Otro>
+            <mio>
+            </mio>
           </Componente>
         </h1>
     );

@@ -108,8 +108,6 @@ KeyPrinter.prototype.enterAdding_proptypes = function(ctx){
       break;
     }
   }
-  console.log("ACA");
-  console.log(currentPropTypesComponent);
   listOfComponentsInFile[index_of_component].mustReceiveProps = [];
 }
 
@@ -246,5 +244,5 @@ function main(inputText) {
 
 
 var matrizFinal = generateMatrix();
-console.log(listOfComponentsInProject);
+console.log(util.inspect(listOfComponentsInProject, {showHidden: false, depth: null}))
 console.log(util.inspect(matrizFinal, {showHidden: false, depth: null}))
