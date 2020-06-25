@@ -92,6 +92,15 @@ ReactListener.prototype.exitHtml_elements = function(ctx) {
 };
 
 
+// Enter a parse tree produced by ReactParser#html_short_element.
+ReactListener.prototype.enterHtml_short_element = function(ctx) {
+};
+
+// Exit a parse tree produced by ReactParser#html_short_element.
+ReactListener.prototype.exitHtml_short_element = function(ctx) {
+};
+
+
 // Enter a parse tree produced by ReactParser#props.
 ReactListener.prototype.enterProps = function(ctx) {
 };

@@ -21,6 +21,7 @@ var KeyPrinter = function () {
 //  Variables globales del proyecto
 var listOfComponentsInProject = [];
 var componentMatrix = [];
+var dictionaryOfCountByComponent = {};
 
 //  Variables locales del listener
 var listOfImports = [];
@@ -204,9 +205,6 @@ function matrixFromArray(arrayOfComponents){
       })[0];
       var componentToMatrix = { name: columnComponent.name, props: []};
 
-      //  Aca toca poner las props en el objeto componentToMatrix
-
-      console.log(arrayOfComponents[i]);
       if(arrayOfComponents[i].componentsInside[nameOfComponent].passedProps){
         for(var k = 0; k<arrayOfComponents[i].componentsInside[nameOfComponent].passedProps.length; k++){
           componentToMatrix.props.push(arrayOfComponents[i].componentsInside[nameOfComponent].passedProps[k]);
@@ -235,7 +233,6 @@ function main(inputText) {
 
  function generateMatrix(){
   var files = fs.readdirSync(ruta_entradas);
-  console.log(files);
   files.forEach(function (file) {
     var input = fs.readFileSync(`./archivos_entrada/${file}`).toString();
     main(input);
@@ -246,4 +243,5 @@ function main(inputText) {
 
 
 var matrizFinal = generateMatrix();
+console.log(listOfComponentsInProject);
 console.log(util.inspect(matrizFinal, {showHidden: false, depth: null}))

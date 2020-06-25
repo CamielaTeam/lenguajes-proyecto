@@ -1,4 +1,4 @@
-// Generated from d:\Windows\Escritorio\UNAL\Lenguajes\Proyecto\gramatica\React.g4 by ANTLR 4.8
+// Generated from React.g4 by ANTLR 4.8
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -121,6 +121,14 @@ public class ReactParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_program; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterProgram(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitProgram(this);
+		}
 	}
 
 	public final ProgramContext program() throws RecognitionException {
@@ -173,6 +181,14 @@ public class ReactParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_program_body; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterProgram_body(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitProgram_body(this);
+		}
 	}
 
 	public final Program_bodyContext program_body() throws RecognitionException {
@@ -243,6 +259,14 @@ public class ReactParser extends Parser {
 		public TerminalNode CORCHETE_DER() { return getToken(ReactParser.CORCHETE_DER, 0); }
 		public TerminalNode SALTO() { return getToken(ReactParser.SALTO, 0); }
 		public Id_importContext(Import_statementContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterId_import(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitId_import(this);
+		}
 	}
 	public static class No_id_importContext extends Import_statementContext {
 		public TerminalNode IMPORT() { return getToken(ReactParser.IMPORT, 0); }
@@ -256,6 +280,14 @@ public class ReactParser extends Parser {
 		public TerminalNode PUNTO_COMA() { return getToken(ReactParser.PUNTO_COMA, 0); }
 		public TerminalNode SALTO() { return getToken(ReactParser.SALTO, 0); }
 		public No_id_importContext(Import_statementContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterNo_id_import(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitNo_id_import(this);
+		}
 	}
 
 	public final Import_statementContext import_statement() throws RecognitionException {
@@ -363,6 +395,14 @@ public class ReactParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_id_list; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterId_list(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitId_list(this);
+		}
 	}
 
 	public final Id_listContext id_list() throws RecognitionException {
@@ -414,6 +454,14 @@ public class ReactParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_more_id; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterMore_id(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitMore_id(this);
+		}
 	}
 
 	public final More_idContext more_id() throws RecognitionException {
@@ -478,6 +526,14 @@ public class ReactParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_functionR; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterFunctionR(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitFunctionR(this);
+		}
 	}
 
 	public final FunctionRContext functionR() throws RecognitionException {
@@ -564,6 +620,14 @@ public class ReactParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_func_body; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterFunc_body(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitFunc_body(this);
+		}
 	}
 
 	public final Func_bodyContext func_body() throws RecognitionException {
@@ -653,6 +717,14 @@ public class ReactParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_html_elements; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterHtml_elements(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitHtml_elements(this);
+		}
 	}
 
 	public final Html_elementsContext html_elements() throws RecognitionException {
@@ -788,6 +860,14 @@ public class ReactParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_html_short_element; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterHtml_short_element(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitHtml_short_element(this);
+		}
 	}
 
 	public final Html_short_elementContext html_short_element() throws RecognitionException {
@@ -840,6 +920,14 @@ public class ReactParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_props; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterProps(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitProps(this);
+		}
 	}
 
 	public final PropsContext props() throws RecognitionException {
@@ -893,6 +981,14 @@ public class ReactParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_more_props; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterMore_props(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitMore_props(this);
+		}
 	}
 
 	public final More_propsContext more_props() throws RecognitionException {
@@ -939,6 +1035,14 @@ public class ReactParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_possible_assign; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterPossible_assign(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitPossible_assign(this);
+		}
 	}
 
 	public final Possible_assignContext possible_assign() throws RecognitionException {
@@ -998,6 +1102,14 @@ public class ReactParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_literal; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterLiteral(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitLiteral(this);
+		}
 	}
 
 	public final LiteralContext literal() throws RecognitionException {
@@ -1041,6 +1153,14 @@ public class ReactParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_value_html_tag; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterValue_html_tag(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitValue_html_tag(this);
+		}
 	}
 
 	public final Value_html_tagContext value_html_tag() throws RecognitionException {
@@ -1102,6 +1222,14 @@ public class ReactParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_adding_proptypes; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterAdding_proptypes(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitAdding_proptypes(this);
+		}
 	}
 
 	public final Adding_proptypesContext adding_proptypes() throws RecognitionException {
@@ -1166,6 +1294,14 @@ public class ReactParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_expr; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterExpr(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitExpr(this);
+		}
 	}
 
 	public final ExprContext expr() throws RecognitionException {
@@ -1206,6 +1342,14 @@ public class ReactParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_prop_types_body; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterProp_types_body(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitProp_types_body(this);
+		}
 	}
 
 	public final Prop_types_bodyContext prop_types_body() throws RecognitionException {
@@ -1282,6 +1426,14 @@ public class ReactParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_types_of_proptypes; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterTypes_of_proptypes(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitTypes_of_proptypes(this);
+		}
 	}
 
 	public final Types_of_proptypesContext types_of_proptypes() throws RecognitionException {
