@@ -21,7 +21,6 @@ var KeyPrinter = function () {
 //  Variables globales del proyecto
 var listOfComponentsInProject = [];
 var componentMatrix = [];
-var dictionaryOfCountByComponent = {};
 
 //  Variables locales del listener
 var listOfImports = [];
@@ -30,6 +29,7 @@ var currentPropTypesComponent = "";
 var currentComponentCall = "";
 var insideImport = false;
 var listOfComponentsInFile = [];
+var arrayOfComponentCalls = [];
 
 
 KeyPrinter.prototype = Object.create(ReactListener.prototype);
@@ -65,6 +65,22 @@ KeyPrinter.prototype.enterHtml_elements = function(ctx){
       }
     }
 
+
+    if(arrayOfComponentCalls.filter(component => {
+      return component.name === ctx.ID()[0].toString()
+    }).length === 0){
+      arrayOfComponentCalls.push({name: ctx.ID()[0].toString(), count: 1});
+    }else{
+
+      var indx = -1;
+      arrayOfComponentCalls.forEach(component => {
+        if(component.name === ctx.ID()[0].toString()){
+          repeatedComponent = component;
+        }
+        indx = indx + 1;
+      })
+      arrayOfComponentCalls[indx].count = arrayOfComponentCalls[indx].count+1;
+    }
     listOfComponentsInFile[index_of_component].componentsInside[ctx.ID()[0].toString()] = {};
     currentComponentCall = ctx.ID()[0].toString();
   }
@@ -103,7 +119,6 @@ KeyPrinter.prototype.enterAdding_proptypes = function(ctx){
   index_of_component = -1;
   for(var i = 0; i < listOfComponentsInFile.length; i++){
     if(listOfComponentsInFile[i].name === currentPropTypesComponent){
-      console.log(listOfComponentsInFile[i].name, currentPropTypesComponent);
       index_of_component = i;
       break;
     }
@@ -119,7 +134,14 @@ KeyPrinter.prototype.exitAdding_proptypes = function(ctx){
 
 
 KeyPrinter.prototype.enterProps = function(ctx){
+  
   if(listOfImports.includes(currentComponentCall)){
+    var possibleRepeatedComponent = arrayOfComponentCalls.filter(component => {return component.name === currentComponentCall})[0];
+    if(possibleRepeatedComponent.count >= 2){
+      console.log("REPETIDO ", possibleRepeatedComponent.name);
+    }
+
+
     index_of_component = -1;
     for(var i = 0; i < listOfComponentsInFile.length; i++){
       if(listOfComponentsInFile[i].name === currentComponent){
@@ -131,7 +153,6 @@ KeyPrinter.prototype.enterProps = function(ctx){
       listOfComponentsInFile[index_of_component].componentsInside[currentComponentCall].passedProps.push(ctx.ID().toString()) :
       listOfComponentsInFile[index_of_component].componentsInside[currentComponentCall].passedProps = [ctx.ID().toString()];
   }
-  
 }
 
 KeyPrinter.prototype.enterProp_types_body = function(ctx){
@@ -183,6 +204,7 @@ KeyPrinter.prototype.exitProgram = function (ctx) {
   insideImport = false;
   listOfComponentsInFile = [];
   currentPropType = "";
+  arrayOfComponentCalls = [];
 };
 
 

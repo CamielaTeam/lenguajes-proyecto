@@ -5,10 +5,10 @@ function Componente2(props){
     return(
         <h1 primeraProp={minumero}>
           <Componente segundaProp={miNumero}>
-            <Otro>
+            <Otro misProps1={a}>
             </Otro>
-            <mio>
-            </mio>
+            <Otro misProps2={b}>
+            </Otro>
           </Componente>
         </h1>
     );
