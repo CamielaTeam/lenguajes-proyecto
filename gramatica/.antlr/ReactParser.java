@@ -1,4 +1,4 @@
-// Generated from React.g4 by ANTLR 4.8
+// Generated from d:\Windows\Escritorio\UNAL\Lenguajes\Proyecto\gramatica\React.g4 by ANTLR 4.8
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -121,14 +121,6 @@ public class ReactParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_program; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterProgram(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitProgram(this);
-		}
 	}
 
 	public final ProgramContext program() throws RecognitionException {
@@ -181,14 +173,6 @@ public class ReactParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_program_body; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterProgram_body(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitProgram_body(this);
-		}
 	}
 
 	public final Program_bodyContext program_body() throws RecognitionException {
@@ -259,14 +243,6 @@ public class ReactParser extends Parser {
 		public TerminalNode CORCHETE_DER() { return getToken(ReactParser.CORCHETE_DER, 0); }
 		public TerminalNode SALTO() { return getToken(ReactParser.SALTO, 0); }
 		public Id_importContext(Import_statementContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterId_import(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitId_import(this);
-		}
 	}
 	public static class No_id_importContext extends Import_statementContext {
 		public TerminalNode IMPORT() { return getToken(ReactParser.IMPORT, 0); }
@@ -280,14 +256,6 @@ public class ReactParser extends Parser {
 		public TerminalNode PUNTO_COMA() { return getToken(ReactParser.PUNTO_COMA, 0); }
 		public TerminalNode SALTO() { return getToken(ReactParser.SALTO, 0); }
 		public No_id_importContext(Import_statementContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterNo_id_import(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitNo_id_import(this);
-		}
 	}
 
 	public final Import_statementContext import_statement() throws RecognitionException {
@@ -395,14 +363,6 @@ public class ReactParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_id_list; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterId_list(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitId_list(this);
-		}
 	}
 
 	public final Id_listContext id_list() throws RecognitionException {
@@ -454,14 +414,6 @@ public class ReactParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_more_id; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterMore_id(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitMore_id(this);
-		}
 	}
 
 	public final More_idContext more_id() throws RecognitionException {
@@ -526,14 +478,6 @@ public class ReactParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_functionR; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterFunctionR(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitFunctionR(this);
-		}
 	}
 
 	public final FunctionRContext functionR() throws RecognitionException {
@@ -607,11 +551,14 @@ public class ReactParser extends Parser {
 	public static class Func_bodyContext extends ParserRuleContext {
 		public TerminalNode RETURN() { return getToken(ReactParser.RETURN, 0); }
 		public TerminalNode PAR_IZQ() { return getToken(ReactParser.PAR_IZQ, 0); }
+		public TerminalNode PAR_DER() { return getToken(ReactParser.PAR_DER, 0); }
+		public TerminalNode PUNTO_COMA() { return getToken(ReactParser.PUNTO_COMA, 0); }
 		public Html_elementsContext html_elements() {
 			return getRuleContext(Html_elementsContext.class,0);
 		}
-		public TerminalNode PAR_DER() { return getToken(ReactParser.PAR_DER, 0); }
-		public TerminalNode PUNTO_COMA() { return getToken(ReactParser.PUNTO_COMA, 0); }
+		public Html_short_elementContext html_short_element() {
+			return getRuleContext(Html_short_elementContext.class,0);
+		}
 		public List<TerminalNode> SALTO() { return getTokens(ReactParser.SALTO); }
 		public TerminalNode SALTO(int i) {
 			return getToken(ReactParser.SALTO, i);
@@ -620,14 +567,6 @@ public class ReactParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_func_body; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterFunc_body(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitFunc_body(this);
-		}
 	}
 
 	public final Func_bodyContext func_body() throws RecognitionException {
@@ -651,21 +590,35 @@ public class ReactParser extends Parser {
 				}
 			}
 
-			setState(114);
-			html_elements();
 			setState(116);
+			_errHandler.sync(this);
+			switch ( getInterpreter().adaptivePredict(_input,12,_ctx) ) {
+			case 1:
+				{
+				setState(114);
+				html_elements();
+				}
+				break;
+			case 2:
+				{
+				setState(115);
+				html_short_element();
+				}
+				break;
+			}
+			setState(119);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==SALTO) {
 				{
-				setState(115);
+				setState(118);
 				match(SALTO);
 				}
 			}
 
-			setState(118);
+			setState(121);
 			match(PAR_DER);
-			setState(119);
+			setState(122);
 			match(PUNTO_COMA);
 			}
 		}
@@ -713,18 +666,16 @@ public class ReactParser extends Parser {
 		public Html_elementsContext html_elements(int i) {
 			return getRuleContext(Html_elementsContext.class,i);
 		}
+		public List<Html_short_elementContext> html_short_element() {
+			return getRuleContexts(Html_short_elementContext.class);
+		}
+		public Html_short_elementContext html_short_element(int i) {
+			return getRuleContext(Html_short_elementContext.class,i);
+		}
 		public Html_elementsContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_html_elements; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterHtml_elements(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitHtml_elements(this);
-		}
 	}
 
 	public final Html_elementsContext html_elements() throws RecognitionException {
@@ -735,39 +686,29 @@ public class ReactParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(121);
-			match(OPEN_TAG);
-			setState(122);
-			match(ID);
 			setState(124);
+			match(OPEN_TAG);
+			setState(125);
+			match(ID);
+			setState(127);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==ID) {
 				{
-				setState(123);
+				setState(126);
 				props();
 				}
 			}
 
-			setState(126);
+			setState(129);
 			match(CLOSE_TAG);
-			setState(128);
-			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,14,_ctx) ) {
-			case 1:
-				{
-				setState(127);
-				match(SALTO);
-				}
-				break;
-			}
 			setState(131);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,15,_ctx) ) {
 			case 1:
 				{
 				setState(130);
-				value_html_tag();
+				match(SALTO);
 				}
 				break;
 			}
@@ -777,64 +718,86 @@ public class ReactParser extends Parser {
 			case 1:
 				{
 				setState(133);
-				match(SALTO);
+				value_html_tag();
 				}
 				break;
 			}
-			setState(139);
+			setState(137);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,17,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
-				if ( _alt==1 ) {
-					{
-					{
-					setState(136);
-					html_elements();
-					}
-					} 
+			switch ( getInterpreter().adaptivePredict(_input,17,_ctx) ) {
+			case 1:
+				{
+				setState(136);
+				match(SALTO);
 				}
-				setState(141);
-				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,17,_ctx);
+				break;
 			}
 			setState(143);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,18,_ctx) ) {
-			case 1:
-				{
-				setState(142);
-				match(SALTO);
+			_alt = getInterpreter().adaptivePredict(_input,19,_ctx);
+			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+				if ( _alt==1 ) {
+					{
+					setState(141);
+					_errHandler.sync(this);
+					switch ( getInterpreter().adaptivePredict(_input,18,_ctx) ) {
+					case 1:
+						{
+						setState(139);
+						html_elements();
+						}
+						break;
+					case 2:
+						{
+						setState(140);
+						html_short_element();
+						}
+						break;
+					}
+					} 
 				}
-				break;
+				setState(145);
+				_errHandler.sync(this);
+				_alt = getInterpreter().adaptivePredict(_input,19,_ctx);
 			}
-			setState(146);
+			setState(147);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==CORCHETE_IZQ || _la==STRING) {
 				{
-				setState(145);
+				setState(146);
 				value_html_tag();
 				}
 			}
 
-			setState(149);
+			setState(150);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==SALTO) {
 				{
-				setState(148);
+				setState(149);
 				match(SALTO);
 				}
 			}
 
-			setState(151);
-			match(OPEN_TAG);
 			setState(152);
-			match(SLASH);
+			match(OPEN_TAG);
 			setState(153);
-			match(ID);
+			match(SLASH);
 			setState(154);
+			match(ID);
+			setState(155);
 			match(CLOSE_TAG);
+			setState(157);
+			_errHandler.sync(this);
+			switch ( getInterpreter().adaptivePredict(_input,22,_ctx) ) {
+			case 1:
+				{
+				setState(156);
+				match(SALTO);
+				}
+				break;
+			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -856,18 +819,11 @@ public class ReactParser extends Parser {
 		public PropsContext props() {
 			return getRuleContext(PropsContext.class,0);
 		}
+		public TerminalNode SALTO() { return getToken(ReactParser.SALTO, 0); }
 		public Html_short_elementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_html_short_element; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterHtml_short_element(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitHtml_short_element(this);
-		}
 	}
 
 	public final Html_short_elementContext html_short_element() throws RecognitionException {
@@ -877,24 +833,34 @@ public class ReactParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(156);
-			match(OPEN_TAG);
-			setState(157);
-			match(ID);
 			setState(159);
+			match(OPEN_TAG);
+			setState(160);
+			match(ID);
+			setState(162);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==ID) {
 				{
-				setState(158);
+				setState(161);
 				props();
 				}
 			}
 
-			setState(161);
+			setState(164);
 			match(SLASH);
-			setState(162);
+			setState(165);
 			match(CLOSE_TAG);
+			setState(167);
+			_errHandler.sync(this);
+			switch ( getInterpreter().adaptivePredict(_input,24,_ctx) ) {
+			case 1:
+				{
+				setState(166);
+				match(SALTO);
+				}
+				break;
+			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -913,21 +879,16 @@ public class ReactParser extends Parser {
 		public Possible_assignContext possible_assign() {
 			return getRuleContext(Possible_assignContext.class,0);
 		}
-		public More_propsContext more_props() {
-			return getRuleContext(More_propsContext.class,0);
+		public List<More_propsContext> more_props() {
+			return getRuleContexts(More_propsContext.class);
+		}
+		public More_propsContext more_props(int i) {
+			return getRuleContext(More_propsContext.class,i);
 		}
 		public PropsContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_props; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterProps(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitProps(this);
-		}
 	}
 
 	public final PropsContext props() throws RecognitionException {
@@ -937,28 +898,32 @@ public class ReactParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(164);
+			setState(169);
 			match(ID);
-			setState(166);
+			setState(171);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==IGUAL) {
 				{
-				setState(165);
+				setState(170);
 				possible_assign();
 				}
 			}
 
-			setState(169);
+			setState(176);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if (_la==ID) {
+			while (_la==ID) {
 				{
-				setState(168);
+				{
+				setState(173);
 				more_props();
 				}
+				}
+				setState(178);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
 			}
-
 			}
 		}
 		catch (RecognitionException re) {
@@ -981,14 +946,6 @@ public class ReactParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_more_props; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterMore_props(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitMore_props(this);
-		}
 	}
 
 	public final More_propsContext more_props() throws RecognitionException {
@@ -998,14 +955,14 @@ public class ReactParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(171);
+			setState(179);
 			match(ID);
-			setState(173);
+			setState(181);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==IGUAL) {
 				{
-				setState(172);
+				setState(180);
 				possible_assign();
 				}
 			}
@@ -1035,14 +992,6 @@ public class ReactParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_possible_assign; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterPossible_assign(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitPossible_assign(this);
-		}
 	}
 
 	public final Possible_assignContext possible_assign() throws RecognitionException {
@@ -1051,18 +1000,18 @@ public class ReactParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(175);
+			setState(183);
 			match(IGUAL);
-			setState(180);
+			setState(188);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case CORCHETE_IZQ:
 				{
-				setState(176);
+				setState(184);
 				match(CORCHETE_IZQ);
-				setState(177);
+				setState(185);
 				match(ID);
-				setState(178);
+				setState(186);
 				match(CORCHETE_DER);
 				}
 				break;
@@ -1072,7 +1021,7 @@ public class ReactParser extends Parser {
 			case STRING:
 			case INTEGER:
 				{
-				setState(179);
+				setState(187);
 				literal();
 				}
 				break;
@@ -1102,14 +1051,6 @@ public class ReactParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_literal; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterLiteral(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitLiteral(this);
-		}
 	}
 
 	public final LiteralContext literal() throws RecognitionException {
@@ -1119,7 +1060,7 @@ public class ReactParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(182);
+			setState(190);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << NULL) | (1L << TRUE) | (1L << FALSE) | (1L << STRING) | (1L << INTEGER))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -1153,38 +1094,30 @@ public class ReactParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_value_html_tag; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterValue_html_tag(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitValue_html_tag(this);
-		}
 	}
 
 	public final Value_html_tagContext value_html_tag() throws RecognitionException {
 		Value_html_tagContext _localctx = new Value_html_tagContext(_ctx, getState());
 		enterRule(_localctx, 26, RULE_value_html_tag);
 		try {
-			setState(189);
+			setState(197);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case CORCHETE_IZQ:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(184);
+				setState(192);
 				match(CORCHETE_IZQ);
-				setState(185);
+				setState(193);
 				expr();
-				setState(186);
+				setState(194);
 				match(CORCHETE_DER);
 				}
 				break;
 			case STRING:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(188);
+				setState(196);
 				match(STRING);
 				}
 				break;
@@ -1222,14 +1155,6 @@ public class ReactParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_adding_proptypes; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterAdding_proptypes(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitAdding_proptypes(this);
-		}
 	}
 
 	public final Adding_proptypesContext adding_proptypes() throws RecognitionException {
@@ -1239,38 +1164,38 @@ public class ReactParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(191);
+			setState(199);
 			match(ID);
-			setState(192);
+			setState(200);
 			match(PUNTO);
-			setState(193);
+			setState(201);
 			match(PROPTYPES);
-			setState(194);
+			setState(202);
 			match(IGUAL);
-			setState(195);
+			setState(203);
 			match(CORCHETE_IZQ);
-			setState(197);
+			setState(205);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==SALTO) {
 				{
-				setState(196);
+				setState(204);
 				match(SALTO);
 				}
 			}
 
-			setState(199);
+			setState(207);
 			prop_types_body();
-			setState(200);
+			setState(208);
 			match(CORCHETE_DER);
-			setState(201);
+			setState(209);
 			match(PUNTO_COMA);
-			setState(203);
+			setState(211);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==SALTO) {
 				{
-				setState(202);
+				setState(210);
 				match(SALTO);
 				}
 			}
@@ -1294,14 +1219,6 @@ public class ReactParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_expr; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterExpr(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitExpr(this);
-		}
 	}
 
 	public final ExprContext expr() throws RecognitionException {
@@ -1310,7 +1227,7 @@ public class ReactParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(205);
+			setState(213);
 			match(STRING);
 			}
 		}
@@ -1342,14 +1259,6 @@ public class ReactParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_prop_types_body; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterProp_types_body(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitProp_types_body(this);
-		}
 	}
 
 	public final Prop_types_bodyContext prop_types_body() throws RecognitionException {
@@ -1359,40 +1268,40 @@ public class ReactParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(207);
+			setState(215);
 			match(ID);
-			setState(208);
+			setState(216);
 			match(DOS_PUNTOS);
-			setState(209);
+			setState(217);
 			match(PROPTYPESCLASS);
-			setState(210);
-			match(PUNTO);
-			setState(211);
-			types_of_proptypes();
 			setState(218);
+			match(PUNTO);
+			setState(219);
+			types_of_proptypes();
+			setState(226);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case SALTO:
 				{
-				setState(212);
+				setState(220);
 				match(SALTO);
 				}
 				break;
 			case COMA:
 				{
-				setState(213);
+				setState(221);
 				match(COMA);
-				setState(215);
+				setState(223);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				if (_la==SALTO) {
 					{
-					setState(214);
+					setState(222);
 					match(SALTO);
 					}
 				}
 
-				setState(217);
+				setState(225);
 				prop_types_body();
 				}
 				break;
@@ -1426,14 +1335,6 @@ public class ReactParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_types_of_proptypes; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).enterTypes_of_proptypes(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactListener ) ((ReactListener)listener).exitTypes_of_proptypes(this);
-		}
 	}
 
 	public final Types_of_proptypesContext types_of_proptypes() throws RecognitionException {
@@ -1443,7 +1344,7 @@ public class ReactParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(220);
+			setState(228);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ARRAY) | (1L << BOOL) | (1L << FUNC) | (1L << NUMBER) | (1L << OBJECT) | (1L << STRING_TYPE) | (1L << SYMBOL))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -1467,7 +1368,7 @@ public class ReactParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3%\u00e1\4\2\t\2\4"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3%\u00e9\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\3\2\7\2(\n\2\f\2\16\2+\13\2\3\2\3\2\3\3\3\3\3\3\5\3\62\n\3"+
@@ -1475,70 +1376,74 @@ public class ReactParser extends Parser {
 		"\5\4E\n\4\3\4\3\4\3\4\3\4\5\4K\n\4\5\4M\n\4\3\5\3\5\7\5Q\n\5\f\5\16\5"+
 		"T\13\5\3\6\3\6\3\6\7\6Y\n\6\f\6\16\6\\\13\6\3\7\3\7\3\7\3\7\3\7\3\7\3"+
 		"\7\5\7e\n\7\3\7\3\7\5\7i\n\7\3\7\3\7\3\7\5\7n\n\7\3\b\3\b\3\b\5\bs\n\b"+
-		"\3\b\3\b\5\bw\n\b\3\b\3\b\3\b\3\t\3\t\3\t\5\t\177\n\t\3\t\3\t\5\t\u0083"+
-		"\n\t\3\t\5\t\u0086\n\t\3\t\5\t\u0089\n\t\3\t\7\t\u008c\n\t\f\t\16\t\u008f"+
-		"\13\t\3\t\5\t\u0092\n\t\3\t\5\t\u0095\n\t\3\t\5\t\u0098\n\t\3\t\3\t\3"+
-		"\t\3\t\3\t\3\n\3\n\3\n\5\n\u00a2\n\n\3\n\3\n\3\n\3\13\3\13\5\13\u00a9"+
-		"\n\13\3\13\5\13\u00ac\n\13\3\f\3\f\5\f\u00b0\n\f\3\r\3\r\3\r\3\r\3\r\5"+
-		"\r\u00b7\n\r\3\16\3\16\3\17\3\17\3\17\3\17\3\17\5\17\u00c0\n\17\3\20\3"+
-		"\20\3\20\3\20\3\20\3\20\5\20\u00c8\n\20\3\20\3\20\3\20\3\20\5\20\u00ce"+
-		"\n\20\3\21\3\21\3\22\3\22\3\22\3\22\3\22\3\22\3\22\3\22\5\22\u00da\n\22"+
-		"\3\22\5\22\u00dd\n\22\3\23\3\23\3\23\2\2\24\2\4\6\b\n\f\16\20\22\24\26"+
-		"\30\32\34\36 \"$\2\4\4\2\25\27$%\3\2\34\"\2\u00ef\2)\3\2\2\2\4\61\3\2"+
-		"\2\2\6L\3\2\2\2\bN\3\2\2\2\nU\3\2\2\2\f]\3\2\2\2\16o\3\2\2\2\20{\3\2\2"+
-		"\2\22\u009e\3\2\2\2\24\u00a6\3\2\2\2\26\u00ad\3\2\2\2\30\u00b1\3\2\2\2"+
-		"\32\u00b8\3\2\2\2\34\u00bf\3\2\2\2\36\u00c1\3\2\2\2 \u00cf\3\2\2\2\"\u00d1"+
-		"\3\2\2\2$\u00de\3\2\2\2&(\5\4\3\2\'&\3\2\2\2(+\3\2\2\2)\'\3\2\2\2)*\3"+
-		"\2\2\2*,\3\2\2\2+)\3\2\2\2,-\7\2\2\3-\3\3\2\2\2.\62\5\6\4\2/\62\5\f\7"+
-		"\2\60\62\5\36\20\2\61.\3\2\2\2\61/\3\2\2\2\61\60\3\2\2\2\62\5\3\2\2\2"+
-		"\63\64\7\6\2\2\64\65\7\7\2\2\65\66\5\b\5\2\66\67\7\b\2\2\678\7\t\2\28"+
-		"9\7$\2\29;\7\n\2\2:<\7\13\2\2;:\3\2\2\2;<\3\2\2\2<M\3\2\2\2=>\7\6\2\2"+
-		">D\7#\2\2?@\7\3\2\2@A\7\7\2\2AB\5\b\5\2BC\7\b\2\2CE\3\2\2\2D?\3\2\2\2"+
-		"DE\3\2\2\2EF\3\2\2\2FG\7\t\2\2GH\7$\2\2HJ\7\n\2\2IK\7\13\2\2JI\3\2\2\2"+
-		"JK\3\2\2\2KM\3\2\2\2L\63\3\2\2\2L=\3\2\2\2M\7\3\2\2\2NR\7#\2\2OQ\5\n\6"+
-		"\2PO\3\2\2\2QT\3\2\2\2RP\3\2\2\2RS\3\2\2\2S\t\3\2\2\2TR\3\2\2\2UV\7\3"+
-		"\2\2VZ\7#\2\2WY\5\n\6\2XW\3\2\2\2Y\\\3\2\2\2ZX\3\2\2\2Z[\3\2\2\2[\13\3"+
-		"\2\2\2\\Z\3\2\2\2]^\7\f\2\2^_\7#\2\2_`\7\r\2\2`a\5\b\5\2ab\7\16\2\2bd"+
-		"\7\7\2\2ce\7\13\2\2dc\3\2\2\2de\3\2\2\2ef\3\2\2\2fh\5\16\b\2gi\7\13\2"+
-		"\2hg\3\2\2\2hi\3\2\2\2ij\3\2\2\2jk\7\b\2\2km\7\n\2\2ln\7\13\2\2ml\3\2"+
-		"\2\2mn\3\2\2\2n\r\3\2\2\2op\7\17\2\2pr\7\r\2\2qs\7\13\2\2rq\3\2\2\2rs"+
-		"\3\2\2\2st\3\2\2\2tv\5\20\t\2uw\7\13\2\2vu\3\2\2\2vw\3\2\2\2wx\3\2\2\2"+
-		"xy\7\16\2\2yz\7\n\2\2z\17\3\2\2\2{|\7\20\2\2|~\7#\2\2}\177\5\24\13\2~"+
-		"}\3\2\2\2~\177\3\2\2\2\177\u0080\3\2\2\2\u0080\u0082\7\21\2\2\u0081\u0083"+
-		"\7\13\2\2\u0082\u0081\3\2\2\2\u0082\u0083\3\2\2\2\u0083\u0085\3\2\2\2"+
-		"\u0084\u0086\5\34\17\2\u0085\u0084\3\2\2\2\u0085\u0086\3\2\2\2\u0086\u0088"+
-		"\3\2\2\2\u0087\u0089\7\13\2\2\u0088\u0087\3\2\2\2\u0088\u0089\3\2\2\2"+
-		"\u0089\u008d\3\2\2\2\u008a\u008c\5\20\t\2\u008b\u008a\3\2\2\2\u008c\u008f"+
-		"\3\2\2\2\u008d\u008b\3\2\2\2\u008d\u008e\3\2\2\2\u008e\u0091\3\2\2\2\u008f"+
-		"\u008d\3\2\2\2\u0090\u0092\7\13\2\2\u0091\u0090\3\2\2\2\u0091\u0092\3"+
-		"\2\2\2\u0092\u0094\3\2\2\2\u0093\u0095\5\34\17\2\u0094\u0093\3\2\2\2\u0094"+
-		"\u0095\3\2\2\2\u0095\u0097\3\2\2\2\u0096\u0098\7\13\2\2\u0097\u0096\3"+
-		"\2\2\2\u0097\u0098\3\2\2\2\u0098\u0099\3\2\2\2\u0099\u009a\7\20\2\2\u009a"+
-		"\u009b\7\22\2\2\u009b\u009c\7#\2\2\u009c\u009d\7\21\2\2\u009d\21\3\2\2"+
-		"\2\u009e\u009f\7\20\2\2\u009f\u00a1\7#\2\2\u00a0\u00a2\5\24\13\2\u00a1"+
-		"\u00a0\3\2\2\2\u00a1\u00a2\3\2\2\2\u00a2\u00a3\3\2\2\2\u00a3\u00a4\7\22"+
-		"\2\2\u00a4\u00a5\7\21\2\2\u00a5\23\3\2\2\2\u00a6\u00a8\7#\2\2\u00a7\u00a9"+
-		"\5\30\r\2\u00a8\u00a7\3\2\2\2\u00a8\u00a9\3\2\2\2\u00a9\u00ab\3\2\2\2"+
-		"\u00aa\u00ac\5\26\f\2\u00ab\u00aa\3\2\2\2\u00ab\u00ac\3\2\2\2\u00ac\25"+
-		"\3\2\2\2\u00ad\u00af\7#\2\2\u00ae\u00b0\5\30\r\2\u00af\u00ae\3\2\2\2\u00af"+
-		"\u00b0\3\2\2\2\u00b0\27\3\2\2\2\u00b1\u00b6\7\24\2\2\u00b2\u00b3\7\7\2"+
-		"\2\u00b3\u00b4\7#\2\2\u00b4\u00b7\7\b\2\2\u00b5\u00b7\5\32\16\2\u00b6"+
-		"\u00b2\3\2\2\2\u00b6\u00b5\3\2\2\2\u00b7\31\3\2\2\2\u00b8\u00b9\t\2\2"+
-		"\2\u00b9\33\3\2\2\2\u00ba\u00bb\7\7\2\2\u00bb\u00bc\5 \21\2\u00bc\u00bd"+
-		"\7\b\2\2\u00bd\u00c0\3\2\2\2\u00be\u00c0\7$\2\2\u00bf\u00ba\3\2\2\2\u00bf"+
-		"\u00be\3\2\2\2\u00c0\35\3\2\2\2\u00c1\u00c2\7#\2\2\u00c2\u00c3\7\30\2"+
-		"\2\u00c3\u00c4\7\31\2\2\u00c4\u00c5\7\24\2\2\u00c5\u00c7\7\7\2\2\u00c6"+
-		"\u00c8\7\13\2\2\u00c7\u00c6\3\2\2\2\u00c7\u00c8\3\2\2\2\u00c8\u00c9\3"+
-		"\2\2\2\u00c9\u00ca\5\"\22\2\u00ca\u00cb\7\b\2\2\u00cb\u00cd\7\n\2\2\u00cc"+
-		"\u00ce\7\13\2\2\u00cd\u00cc\3\2\2\2\u00cd\u00ce\3\2\2\2\u00ce\37\3\2\2"+
-		"\2\u00cf\u00d0\7$\2\2\u00d0!\3\2\2\2\u00d1\u00d2\7#\2\2\u00d2\u00d3\7"+
-		"\33\2\2\u00d3\u00d4\7\32\2\2\u00d4\u00d5\7\30\2\2\u00d5\u00dc\5$\23\2"+
-		"\u00d6\u00dd\7\13\2\2\u00d7\u00d9\7\3\2\2\u00d8\u00da\7\13\2\2\u00d9\u00d8"+
-		"\3\2\2\2\u00d9\u00da\3\2\2\2\u00da\u00db\3\2\2\2\u00db\u00dd\5\"\22\2"+
-		"\u00dc\u00d6\3\2\2\2\u00dc\u00d7\3\2\2\2\u00dc\u00dd\3\2\2\2\u00dd#\3"+
-		"\2\2\2\u00de\u00df\t\3\2\2\u00df%\3\2\2\2!)\61;DJLRZdhmrv~\u0082\u0085"+
-		"\u0088\u008d\u0091\u0094\u0097\u00a1\u00a8\u00ab\u00af\u00b6\u00bf\u00c7"+
-		"\u00cd\u00d9\u00dc";
+		"\3\b\3\b\5\bw\n\b\3\b\5\bz\n\b\3\b\3\b\3\b\3\t\3\t\3\t\5\t\u0082\n\t\3"+
+		"\t\3\t\5\t\u0086\n\t\3\t\5\t\u0089\n\t\3\t\5\t\u008c\n\t\3\t\3\t\7\t\u0090"+
+		"\n\t\f\t\16\t\u0093\13\t\3\t\5\t\u0096\n\t\3\t\5\t\u0099\n\t\3\t\3\t\3"+
+		"\t\3\t\3\t\5\t\u00a0\n\t\3\n\3\n\3\n\5\n\u00a5\n\n\3\n\3\n\3\n\5\n\u00aa"+
+		"\n\n\3\13\3\13\5\13\u00ae\n\13\3\13\7\13\u00b1\n\13\f\13\16\13\u00b4\13"+
+		"\13\3\f\3\f\5\f\u00b8\n\f\3\r\3\r\3\r\3\r\3\r\5\r\u00bf\n\r\3\16\3\16"+
+		"\3\17\3\17\3\17\3\17\3\17\5\17\u00c8\n\17\3\20\3\20\3\20\3\20\3\20\3\20"+
+		"\5\20\u00d0\n\20\3\20\3\20\3\20\3\20\5\20\u00d6\n\20\3\21\3\21\3\22\3"+
+		"\22\3\22\3\22\3\22\3\22\3\22\3\22\5\22\u00e2\n\22\3\22\5\22\u00e5\n\22"+
+		"\3\23\3\23\3\23\2\2\24\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$\2\4"+
+		"\4\2\25\27$%\3\2\34\"\2\u00fa\2)\3\2\2\2\4\61\3\2\2\2\6L\3\2\2\2\bN\3"+
+		"\2\2\2\nU\3\2\2\2\f]\3\2\2\2\16o\3\2\2\2\20~\3\2\2\2\22\u00a1\3\2\2\2"+
+		"\24\u00ab\3\2\2\2\26\u00b5\3\2\2\2\30\u00b9\3\2\2\2\32\u00c0\3\2\2\2\34"+
+		"\u00c7\3\2\2\2\36\u00c9\3\2\2\2 \u00d7\3\2\2\2\"\u00d9\3\2\2\2$\u00e6"+
+		"\3\2\2\2&(\5\4\3\2\'&\3\2\2\2(+\3\2\2\2)\'\3\2\2\2)*\3\2\2\2*,\3\2\2\2"+
+		"+)\3\2\2\2,-\7\2\2\3-\3\3\2\2\2.\62\5\6\4\2/\62\5\f\7\2\60\62\5\36\20"+
+		"\2\61.\3\2\2\2\61/\3\2\2\2\61\60\3\2\2\2\62\5\3\2\2\2\63\64\7\6\2\2\64"+
+		"\65\7\7\2\2\65\66\5\b\5\2\66\67\7\b\2\2\678\7\t\2\289\7$\2\29;\7\n\2\2"+
+		":<\7\13\2\2;:\3\2\2\2;<\3\2\2\2<M\3\2\2\2=>\7\6\2\2>D\7#\2\2?@\7\3\2\2"+
+		"@A\7\7\2\2AB\5\b\5\2BC\7\b\2\2CE\3\2\2\2D?\3\2\2\2DE\3\2\2\2EF\3\2\2\2"+
+		"FG\7\t\2\2GH\7$\2\2HJ\7\n\2\2IK\7\13\2\2JI\3\2\2\2JK\3\2\2\2KM\3\2\2\2"+
+		"L\63\3\2\2\2L=\3\2\2\2M\7\3\2\2\2NR\7#\2\2OQ\5\n\6\2PO\3\2\2\2QT\3\2\2"+
+		"\2RP\3\2\2\2RS\3\2\2\2S\t\3\2\2\2TR\3\2\2\2UV\7\3\2\2VZ\7#\2\2WY\5\n\6"+
+		"\2XW\3\2\2\2Y\\\3\2\2\2ZX\3\2\2\2Z[\3\2\2\2[\13\3\2\2\2\\Z\3\2\2\2]^\7"+
+		"\f\2\2^_\7#\2\2_`\7\r\2\2`a\5\b\5\2ab\7\16\2\2bd\7\7\2\2ce\7\13\2\2dc"+
+		"\3\2\2\2de\3\2\2\2ef\3\2\2\2fh\5\16\b\2gi\7\13\2\2hg\3\2\2\2hi\3\2\2\2"+
+		"ij\3\2\2\2jk\7\b\2\2km\7\n\2\2ln\7\13\2\2ml\3\2\2\2mn\3\2\2\2n\r\3\2\2"+
+		"\2op\7\17\2\2pr\7\r\2\2qs\7\13\2\2rq\3\2\2\2rs\3\2\2\2sv\3\2\2\2tw\5\20"+
+		"\t\2uw\5\22\n\2vt\3\2\2\2vu\3\2\2\2wy\3\2\2\2xz\7\13\2\2yx\3\2\2\2yz\3"+
+		"\2\2\2z{\3\2\2\2{|\7\16\2\2|}\7\n\2\2}\17\3\2\2\2~\177\7\20\2\2\177\u0081"+
+		"\7#\2\2\u0080\u0082\5\24\13\2\u0081\u0080\3\2\2\2\u0081\u0082\3\2\2\2"+
+		"\u0082\u0083\3\2\2\2\u0083\u0085\7\21\2\2\u0084\u0086\7\13\2\2\u0085\u0084"+
+		"\3\2\2\2\u0085\u0086\3\2\2\2\u0086\u0088\3\2\2\2\u0087\u0089\5\34\17\2"+
+		"\u0088\u0087\3\2\2\2\u0088\u0089\3\2\2\2\u0089\u008b\3\2\2\2\u008a\u008c"+
+		"\7\13\2\2\u008b\u008a\3\2\2\2\u008b\u008c\3\2\2\2\u008c\u0091\3\2\2\2"+
+		"\u008d\u0090\5\20\t\2\u008e\u0090\5\22\n\2\u008f\u008d\3\2\2\2\u008f\u008e"+
+		"\3\2\2\2\u0090\u0093\3\2\2\2\u0091\u008f\3\2\2\2\u0091\u0092\3\2\2\2\u0092"+
+		"\u0095\3\2\2\2\u0093\u0091\3\2\2\2\u0094\u0096\5\34\17\2\u0095\u0094\3"+
+		"\2\2\2\u0095\u0096\3\2\2\2\u0096\u0098\3\2\2\2\u0097\u0099\7\13\2\2\u0098"+
+		"\u0097\3\2\2\2\u0098\u0099\3\2\2\2\u0099\u009a\3\2\2\2\u009a\u009b\7\20"+
+		"\2\2\u009b\u009c\7\22\2\2\u009c\u009d\7#\2\2\u009d\u009f\7\21\2\2\u009e"+
+		"\u00a0\7\13\2\2\u009f\u009e\3\2\2\2\u009f\u00a0\3\2\2\2\u00a0\21\3\2\2"+
+		"\2\u00a1\u00a2\7\20\2\2\u00a2\u00a4\7#\2\2\u00a3\u00a5\5\24\13\2\u00a4"+
+		"\u00a3\3\2\2\2\u00a4\u00a5\3\2\2\2\u00a5\u00a6\3\2\2\2\u00a6\u00a7\7\22"+
+		"\2\2\u00a7\u00a9\7\21\2\2\u00a8\u00aa\7\13\2\2\u00a9\u00a8\3\2\2\2\u00a9"+
+		"\u00aa\3\2\2\2\u00aa\23\3\2\2\2\u00ab\u00ad\7#\2\2\u00ac\u00ae\5\30\r"+
+		"\2\u00ad\u00ac\3\2\2\2\u00ad\u00ae\3\2\2\2\u00ae\u00b2\3\2\2\2\u00af\u00b1"+
+		"\5\26\f\2\u00b0\u00af\3\2\2\2\u00b1\u00b4\3\2\2\2\u00b2\u00b0\3\2\2\2"+
+		"\u00b2\u00b3\3\2\2\2\u00b3\25\3\2\2\2\u00b4\u00b2\3\2\2\2\u00b5\u00b7"+
+		"\7#\2\2\u00b6\u00b8\5\30\r\2\u00b7\u00b6\3\2\2\2\u00b7\u00b8\3\2\2\2\u00b8"+
+		"\27\3\2\2\2\u00b9\u00be\7\24\2\2\u00ba\u00bb\7\7\2\2\u00bb\u00bc\7#\2"+
+		"\2\u00bc\u00bf\7\b\2\2\u00bd\u00bf\5\32\16\2\u00be\u00ba\3\2\2\2\u00be"+
+		"\u00bd\3\2\2\2\u00bf\31\3\2\2\2\u00c0\u00c1\t\2\2\2\u00c1\33\3\2\2\2\u00c2"+
+		"\u00c3\7\7\2\2\u00c3\u00c4\5 \21\2\u00c4\u00c5\7\b\2\2\u00c5\u00c8\3\2"+
+		"\2\2\u00c6\u00c8\7$\2\2\u00c7\u00c2\3\2\2\2\u00c7\u00c6\3\2\2\2\u00c8"+
+		"\35\3\2\2\2\u00c9\u00ca\7#\2\2\u00ca\u00cb\7\30\2\2\u00cb\u00cc\7\31\2"+
+		"\2\u00cc\u00cd\7\24\2\2\u00cd\u00cf\7\7\2\2\u00ce\u00d0\7\13\2\2\u00cf"+
+		"\u00ce\3\2\2\2\u00cf\u00d0\3\2\2\2\u00d0\u00d1\3\2\2\2\u00d1\u00d2\5\""+
+		"\22\2\u00d2\u00d3\7\b\2\2\u00d3\u00d5\7\n\2\2\u00d4\u00d6\7\13\2\2\u00d5"+
+		"\u00d4\3\2\2\2\u00d5\u00d6\3\2\2\2\u00d6\37\3\2\2\2\u00d7\u00d8\7$\2\2"+
+		"\u00d8!\3\2\2\2\u00d9\u00da\7#\2\2\u00da\u00db\7\33\2\2\u00db\u00dc\7"+
+		"\32\2\2\u00dc\u00dd\7\30\2\2\u00dd\u00e4\5$\23\2\u00de\u00e5\7\13\2\2"+
+		"\u00df\u00e1\7\3\2\2\u00e0\u00e2\7\13\2\2\u00e1\u00e0\3\2\2\2\u00e1\u00e2"+
+		"\3\2\2\2\u00e2\u00e3\3\2\2\2\u00e3\u00e5\5\"\22\2\u00e4\u00de\3\2\2\2"+
+		"\u00e4\u00df\3\2\2\2\u00e4\u00e5\3\2\2\2\u00e5#\3\2\2\2\u00e6\u00e7\t"+
+		"\3\2\2\u00e7%\3\2\2\2$)\61;DJLRZdhmrvy\u0081\u0085\u0088\u008b\u008f\u0091"+
+		"\u0095\u0098\u009f\u00a4\u00a9\u00ad\u00b2\u00b7\u00be\u00c7\u00cf\u00d5"+
+		"\u00e1\u00e4";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

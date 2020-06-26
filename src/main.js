@@ -138,6 +138,7 @@ KeyPrinter.prototype.exitAdding_proptypes = function(ctx){
 
 
 
+
 KeyPrinter.prototype.enterProps = function(ctx){
   
   if(listOfImports.includes(currentComponentCall)){
@@ -184,6 +185,52 @@ KeyPrinter.prototype.enterProps = function(ctx){
     
   }
 }
+
+ReactListener.prototype.enterMore_props = function(ctx) {
+  if(listOfImports.includes(currentComponentCall)){
+    var repeated = false;
+    
+    var possibleRepeatedComponent = arrayOfComponentCalls.filter(component => {return component.name === currentComponentCall})[0];
+    if(possibleRepeatedComponent.count >= 2){
+      console.log("REPETIDO ", possibleRepeatedComponent.name);
+      repeated = true;
+    }
+    index_of_component = -1;
+    for(var i = 0; i < listOfComponentsInFile.length; i++){
+      if(listOfComponentsInFile[i].name === currentComponent){
+        index_of_component = i;
+        break;
+      }
+    }
+    
+
+    if(!repeated){
+      listOfComponentsInFile[index_of_component].componentsInside[currentComponentCall].passedProps ? 
+      listOfComponentsInFile[index_of_component].componentsInside[currentComponentCall].passedProps.push(ctx.ID().toString()) :
+      listOfComponentsInFile[index_of_component].componentsInside[currentComponentCall].passedProps = [ctx.ID().toString()];
+    }else{
+      console.log("REPETIDO CASO");
+      console.log(util.inspect(listOfComponentsInFile[index_of_component].componentsInside, {showHidden: false, depth: null}))
+
+      if(possibleRepeatedComponent.count >= 2 && 
+        !Array.isArray( listOfComponentsInFile[index_of_component].componentsInside[currentComponentCall].passedProps[0])){
+          console.log("Primer caso");
+        listOfComponentsInFile[index_of_component]
+        .componentsInside[currentComponentCall]
+        .passedProps = [listOfComponentsInFile[index_of_component].componentsInside[currentComponentCall].passedProps];
+        listOfComponentsInFile[index_of_component]
+        .componentsInside[currentComponentCall]
+        .passedProps[possibleRepeatedComponent.count -1] = [ctx.ID().toString()]
+      }else{
+        console.log("Segundo caso");
+        listOfComponentsInFile[index_of_component]
+        .componentsInside[currentComponentCall]
+        .passedProps[possibleRepeatedComponent.count -1].push(ctx.ID().toString());
+      }
+    }
+    
+  }
+};
 
 KeyPrinter.prototype.enterProp_types_body = function(ctx){
   index_of_component = -1;
