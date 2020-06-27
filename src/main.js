@@ -383,10 +383,10 @@ function main(inputText) {
     main(input);
   });
   matrixFromArray(listOfComponentsInProject);
-  return componentMatrix;
+  return [listOfComponentsInProject, componentMatrix];
 }
 
 
 var matrizFinal = generateMatrix();
-console.log(util.inspect(listOfComponentsInProject, {showHidden: false, depth: null}))
+
 console.log(util.inspect(matrizFinal, {showHidden: false, depth: null}))

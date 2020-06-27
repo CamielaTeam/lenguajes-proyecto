@@ -29,6 +29,38 @@ expr                    :   STRING;
 prop_types_body         :   ID DOS_PUNTOS PROPTYPESCLASS PUNTO types_of_proptypes (SALTO | COMA SALTO? prop_types_body)?;
 types_of_proptypes      :   ARRAY | BOOL | FUNC | NUMBER | OBJECT | STRING_TYPE | SYMBOL;
 
+var_def                 :   VAR ID IGUAL literal PUNTO_COMA SALTO?;
+stmt                    :   IF expr CORCHETE_IZQ SALTO? block CORCHETE_DER (ELSE IF expr CORCHETE_IZQ SALTO? block CORCHETE_DER)* (ELSE CORCHETE_IZQ SALTO? block CORCHETE_DER)? PUNTO_COMA SALTO?|
+                            WHILE expr CORCHETE_IZQ SALTO? block CORCHETE_DER PUNTO_COMA SALTO? |
+                            FOR PAR_IZQ (VAR | LET) ID IGUAL literal PUNTO_COMA ID (OPEN_TAG | CLOSE_TAG | ES_DIFERENTE | ES_IGUAL) literal PUNTO_COMA ID (INCREMENTAR | DECREMENTAR) PAR_DER CORCHETE_IZQ SALTO? block CORCHETE_DER PUNTO_COMA SALTO?;
+                            simple_stmt SALTO?;
+simple_stmt             :   BREAK PUNTO_COMA SALTO? | 
+                            expr | 
+                            RETURN expr? PUNTO_COMA SALTO? |
+                            (target IGUAL)+  expr PUNTO_COMA SALTO?;
+block                   :   stmt+;
+expr                    :   NOT expr | 
+                            expr (AND | OR) expr |
+                            expr INTERROGANTE expr DOS_PUNTOS expr PUNTO_COMA SALTO? | 
+                            cexpr;
+cexpr                   :   ID |
+                            literal |
+                            PAR_IZQ expr PAR_DER |
+                            cexpr PUNTO ID |
+                            cexpr PAR_CUADR_IZQ expr PAR_CUADR_DER |
+                            cexpr PUNTO ID PAR_IZQ list_expr? PAR_DER |
+                            ID PAR_IZQ list_expr? PAR_DER |
+                            cexpr bin_op cexpr |
+                            MENOS cexpr;
+list_expr               :   expr more_expr?;
+more_expr               :   COMA expr more_expr*;
+target                  :   ID |
+                            cexpr PUNTO ID |
+                            cexpr PAR_CUADR_IZQ expr PAR_CUADR_DER;
+
+
+
+
 
 
 COMA               :   ',';
@@ -63,12 +95,21 @@ NUMBER             :   'number';
 OBJECT             :   'object';
 STRING_TYPE        :   'string';
 SYMBOL             :   'symbol';
-
-
-
-
-
-
+IF                 :   'if';
+ELSE               :   'else';
+VAR                :   'var';
+LET                :   'let'; 
+ES_IGUAL           :   '===';
+ES_DIFERENTE       :   '!==';
+INCREMENTAR        :   '++';
+DECREMENTAR        :   '--';
+BREAK              :   'break';
+NOT                :   '!';
+AND                :   '&&';
+OR                 :   '||';
+INTERROGANTE       :   '?';
+PAR_CUADR_IZQ      :   '[';
+PAR_CUADR_DER      :   ']';
 
 ID               :   ([A-Za-z_])([A-Za-z_0-9])* ;
 STRING           :   COMILLA1 [A-Za-z0-9_!.? ]* COMILLA1 | COMILLA2 [A-Za-z0-9_!.? ]* COMILLA2;

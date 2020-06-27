@@ -4,12 +4,6 @@ import Otro from 'otro';
 function Componente2(props){
     return(
         <h1 primeraProp={minumero}>
-          <Componente segundaProp={miNumero}>
-            <Otro misProps1={a} otraProp={c} ootraprop={yes}>
-            </Otro>
-            <Otro misProps2={b}>
-            </Otro>
-          </Componente>
         </h1>
     );
 };

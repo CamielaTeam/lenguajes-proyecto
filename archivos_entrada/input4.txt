@@ -1,15 +1,15 @@
 import {asd, bfs} from 'jiji';
 import Componente from 'jiji';
 import Componente2 from 'asd';
-function Otro(props){
+function Otro2(props){
     return(
         <h1 primeraProp={minumero}>
-          <Componente propDePrueba={b}>
+          <Componente2 propDePrueba={b}>
           </Componente>
         </h1>
     );
 };
-Otro.propTypes = {
+Otro2.propTypes = {
   name3: PropTypes.number,
   otro3: PropTypes.func
 };

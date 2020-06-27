@@ -5,8 +5,6 @@ function Componente(props){
     return(
         <h1 primeraProp={minumero}>
           <Componente2 primeraProp={miNumero}>
-            <Otro propEnOtro={propEnOtro}>
-            </Otro>
           </Componente2>
         </h1>
     );
