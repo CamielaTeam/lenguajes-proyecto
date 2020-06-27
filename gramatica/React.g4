@@ -25,14 +25,13 @@ possible_assign         :   IGUAL (CORCHETE_IZQ ID CORCHETE_DER | literal);
 literal                 :   STRING | NULL | TRUE | FALSE | INTEGER;
 value_html_tag          :   CORCHETE_IZQ expr CORCHETE_DER | STRING;
 adding_proptypes        :   ID PUNTO PROPTYPES IGUAL CORCHETE_IZQ SALTO? prop_types_body CORCHETE_DER PUNTO_COMA SALTO?;
-expr                    :   STRING;
 prop_types_body         :   ID DOS_PUNTOS PROPTYPESCLASS PUNTO types_of_proptypes (SALTO | COMA SALTO? prop_types_body)?;
 types_of_proptypes      :   ARRAY | BOOL | FUNC | NUMBER | OBJECT | STRING_TYPE | SYMBOL;
 
 var_def                 :   VAR ID IGUAL literal PUNTO_COMA SALTO?;
 stmt                    :   IF expr CORCHETE_IZQ SALTO? block CORCHETE_DER (ELSE IF expr CORCHETE_IZQ SALTO? block CORCHETE_DER)* (ELSE CORCHETE_IZQ SALTO? block CORCHETE_DER)? PUNTO_COMA SALTO?|
                             WHILE expr CORCHETE_IZQ SALTO? block CORCHETE_DER PUNTO_COMA SALTO? |
-                            FOR PAR_IZQ (VAR | LET) ID IGUAL literal PUNTO_COMA ID (OPEN_TAG | CLOSE_TAG | ES_DIFERENTE | ES_IGUAL) literal PUNTO_COMA ID (INCREMENTAR | DECREMENTAR) PAR_DER CORCHETE_IZQ SALTO? block CORCHETE_DER PUNTO_COMA SALTO?;
+                            FOR PAR_IZQ (VAR | LET) ID IGUAL literal PUNTO_COMA ID (OPEN_TAG | CLOSE_TAG | ES_DIFERENTE | ES_IGUAL) literal PUNTO_COMA ID (INCREMENTAR | DECREMENTAR) PAR_DER CORCHETE_IZQ SALTO? block CORCHETE_DER PUNTO_COMA SALTO? |
                             simple_stmt SALTO?;
 simple_stmt             :   BREAK PUNTO_COMA SALTO? | 
                             expr | 
@@ -50,7 +49,7 @@ cexpr                   :   ID |
                             cexpr PAR_CUADR_IZQ expr PAR_CUADR_DER |
                             cexpr PUNTO ID PAR_IZQ list_expr? PAR_DER |
                             ID PAR_IZQ list_expr? PAR_DER |
-                            cexpr bin_op cexpr |
+                            //cexpr bin_op cexpr |
                             MENOS cexpr;
 list_expr               :   expr more_expr?;
 more_expr               :   COMA expr more_expr*;
@@ -110,7 +109,12 @@ OR                 :   '||';
 INTERROGANTE       :   '?';
 PAR_CUADR_IZQ      :   '[';
 PAR_CUADR_DER      :   ']';
+WHILE              :   'while';
+FOR                :   'for';
+MENOS              :   '-';
 
+
+WHITESPACE       :   (' '|'\t') -> skip;
 ID               :   ([A-Za-z_])([A-Za-z_0-9])* ;
 STRING           :   COMILLA1 [A-Za-z0-9_!.? ]* COMILLA1 | COMILLA2 [A-Za-z0-9_!.? ]* COMILLA2;
 INTEGER          :   '0'..'9'+;
