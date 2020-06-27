@@ -92,6 +92,50 @@ KeyPrinter.prototype.enterHtml_elements = function(ctx){
 
 }
 
+KeyPrinter.prototype.enterHtml_short_element = function(ctx) {
+  if(listOfComponentsInFile.filter((component) => 
+  { return component.name === currentComponent}
+  ).length === 0){
+    listOfComponentsInFile.push({name: currentComponent, componentsInside: {}});
+  }
+  if(listOfImports.includes(ctx.ID().toString())){
+    
+    index_of_component = -1;
+
+    for(var i = 0; i < listOfComponentsInFile.length; i++){
+      if(listOfComponentsInFile[i].name === currentComponent){
+        index_of_component = i;
+        break;
+      }
+    }
+
+
+    if(arrayOfComponentCalls.filter(component => {
+      return component.name === ctx.ID().toString()
+    }).length === 0){
+      arrayOfComponentCalls.push({name: ctx.ID().toString(), count: 1});
+    }else{
+
+      var indx = -1;
+      arrayOfComponentCalls.forEach(component => {
+        if(component.name === ctx.ID().toString()){
+          repeatedComponent = component;
+        }
+        indx = indx + 1;
+      })
+      arrayOfComponentCalls[indx].count = arrayOfComponentCalls[indx].count+1;
+    }
+
+    listOfComponentsInFile[index_of_component].componentsInside[ctx.ID().toString()] = 
+    listOfComponentsInFile[index_of_component].componentsInside[ctx.ID().toString()] ?
+    listOfComponentsInFile[index_of_component].componentsInside[ctx.ID().toString()] :
+    {};
+    
+    currentComponentCall = ctx.ID().toString();
+  }
+};
+
+
 KeyPrinter.prototype.enterNo_id_import = function(ctx){
   insideImport = true;
 }

@@ -1,10 +1,11 @@
 import {asd, bfs} from 'jiji';
 import Componente2 from 'jiji';
+import Otro from 'otro';
 function Componente(props){
     return(
         <h1 primeraProp={minumero}>
           <Componente2 primeraProp={miNumero}>
-            <Otro>
+            <Otro propEnOtro={propEnOtro}>
             </Otro>
           </Componente2>
         </h1>
